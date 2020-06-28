@@ -1,0 +1,81 @@
+@charset'utf-8';
+html,body{
+    height: 100%;
+}
+.wrap{
+    width: 1200px;
+    margin: 0 auto;
+}
+/* 头部样式 */
+header{
+    height: 48px;
+    background-color: rgba(0,0,0,0.05);
+}
+.header-container{
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.header-container>:first-child{
+    padding: 0 10px;
+}
+
+/* 主体样式 */
+main{
+    height: 690px;width: 440px;
+    position: fixed;
+    top: 0;bottom: 0;
+    left: 0;right: 0;
+    margin: auto;
+}
+h1{
+    text-align: center;
+    line-height: 32px;
+    font-size: 32px;
+    color: #191919;
+}
+.reDsc{
+    text-align: center;
+    font-size: 18px;
+    color: #191919;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 8px 0;
+}
+main p{
+    text-align: center;
+    height: 74px;
+    position: relative;
+}
+main input{
+    border: 0;
+    background: transparent;
+    background-color: #ccc;
+    border-radius: 6px;
+    font-size: 12px;
+    width: 352px;
+    height: 40px;
+    padding: 2px 5px;
+    color: #191919;
+}
+.regErrMsg{
+    position: absolute;
+    left: 44px;top: 48px;
+    text-align: start;
+    color: red;
+}
+#registerBtn{
+    width: 220px;
+    font-size: 14px;
+    font-weight: 400;
+    display: inline-block;
+    height: 38px;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 6.4px;
+    background: #007dff;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}

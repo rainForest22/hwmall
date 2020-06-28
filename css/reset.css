@@ -1,0 +1,49 @@
+@charset 'utf-8';
+html,body,div,ul,li,ol,dl,dt,dd,input,fieldset,h1,h2,h3,h4,h5,h6,form,p{
+    margin: 0;padding: 0;
+}
+html,body{
+    height: 100%;
+}
+a,img{
+    display: block;
+}
+h1,h2,h3,h4,h5,h6,b,strong{
+    font-weight: normal;
+    font-size: 16px;
+}
+a{
+    text-decoration: none;
+}
+i,em{
+    font-style: normal;
+}
+b,strong{
+    font-weight: normal;
+}
+li{
+    list-style: none;
+}
+.fll{
+    float: left;
+}
+.flr{
+    float: right;
+}
+.clear_fix::after{
+    content: '.';
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.clear_border{
+    border: 0!important;
+}
+.clear_bgimg{
+    background-image: none!important;
+}
+.clear_margin{
+    margin: 0!important;
+}
