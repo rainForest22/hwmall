@@ -23,30 +23,31 @@ $(() => {
         $(this).next().next().text(`${eval(options[this.id].reg) ? "" : options[this.id].msg}`)
     })
     //注册提交
-    $("#registerBtn").click(function () {        
-        $("#username,#pwd,#cfpwd,#imageCode").trigger("blur");        
-        if ($("span:empty").length != 3) return;   
+    $("#registerBtn").click(function () {
+        $("#username,#pwd,#cfpwd,#imageCode").trigger("blur");
+        if ($("span:empty").length != 3) return;
         //将提交信息存入data
         let data = {
             username: $.trim($("#username").val()),
-            pwd: $.trim($("#pwd").val())
+            pwd: md5($.trim($("#pwd").val())).slice(-10)
         }
         //发送请求
         $.ajax({
             type: "get",
             // url: "../sever/registerNode.js",
-            url:"http://localhost:8080/",
+            url: "http://localhost:8080/",
             data,
-            dataType: "json",
+            dataType: "JSON",
             success: function (response) {
                 if (response.status == "success") {
-                    console.log(1);
-                    
                     console.log(response.msg);
                     // window.location.href = "http://www.baidu.com";
                 } else {
-                    alert(response.msg);
+                    console.log(response.msg);
                 }
+            },
+            error:function(err){
+                console.log(err);
             }
         })
     })
