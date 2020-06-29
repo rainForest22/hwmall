@@ -7,6 +7,8 @@ const mysql = require('mysql');
 var sever = http.createServer(function (req, res) {
     res.writeHead(200, { "Content-Type": "application/json;charset=utf8", "Access-Control-Allow-Origin": "http://localhost" });
     // 获取请求数据
+    console.log(req.url);
+    
     let data = url.parse(req.url, true).query;
     // 连接数据库
     let db = mysql.createConnection({
@@ -33,8 +35,8 @@ var sever = http.createServer(function (req, res) {
     }).then(() => {
         // 不存在时新增用户
         let sqlInsert = `INSERT INTO users (user_id,user_pwd) VALUES ('${data.username}','${data.pwd}')`
-        db.query(sqlInsert, (error, results) =>{
-            if(error) throw error;
+        db.query(sqlInsert, (error, results) => {
+            if (error) throw error;
             res.end('{"status":"success","msg":"恭喜您注册成功"}');
         });
         db.end();

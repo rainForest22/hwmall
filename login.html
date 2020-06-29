@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link href="https://id1.cloud.huawei.com/CAS/up/idmw_rss_55/logos/icons/huawei.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="./js/md5.js"></script>
+    <script src="./js/captcha.js"></script>
+    <script src="./js/login.js"></script>
+</head>
+<body>
+    <header>
+        <div class="wrap header-container">
+            <div class="logo">
+                <img src="./image/HUAWEI.svg" alt="HUAWEI">
+            </div>
+            <div class="logoTitle">
+                <b>|</b>
+                <b>华为商城</b>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1>华为账号登录</h1>
+        <p>
+            <input type="text" name="usrname" id="username" placeholder="请输入手机号"><br>
+            <span class="regErrMsg"></span>
+        </p>
+        <p>
+            <input type="password" name="pwd" id="pwd" placeholder="请输入密码"><br>
+            <span class="regErrMsg"></span>
+        </p>
+        <p>
+            <button class="button register-btn" id="registerBtn">立即登录</button>
+        </p>
+        <div class="lgDsc">
+            <span><a href="./register.html">注册</a></span>
+            <span><a href="./login.html">忘记密码</a></span>
+            <span><a href="./login.html">更多</a></span>
+        </div>
+    </main>
+</body>
+</html>

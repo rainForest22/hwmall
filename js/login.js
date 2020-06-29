@@ -7,14 +7,6 @@ $(() => {
         pwd: {
             reg: "/^\\w{8,16}$/.test(val)",
             msg: "密码不符合要求"
-        },
-        cfpwd: {
-            reg: "val===$.trim($('#pwd').val())",
-            msg: "两次密码不一致"
-        },
-        imageCode: {
-            reg: "imgCodeTarget == val",
-            msg: "输入的验证码不正确！！！",
         }
     }
     //验证事件
@@ -25,7 +17,7 @@ $(() => {
     //注册提交
     $("#registerBtn").click(function () {
         $("#username,#pwd,#cfpwd,#imageCode").trigger("blur");
-        if ($("span:empty").length != 3) return;
+        if ($("span:empty").length != 2) return;
         //将提交信息存入data
         let data = {
             username: $.trim($("#username").val()),
@@ -35,18 +27,26 @@ $(() => {
         $.ajax({
             type: "get",
             // url: "../sever/registerNode.js",
-            url: "http://localhost:8080/",
+            url: "http://localhost:8081/",
             data,
             dataType: "JSON",
             success: function (response) {
-                if (response.status == "success") {
-                    console.log(response.msg);
+                switch (response.status) {
+                    case 0:
+                        console.log(response.msg);
+                        break;
+                    case 1:
+                        console.log(response.msg);
                         location.href="../hwmall/home.html";
-                } else {
-                    console.log(response.msg);
+                        break;
+                    case -1:
+                        console.log(response.msg);
+                        break;
+                    default:
+                        break;
                 }
             },
-            error:function(err){
+            error: function (err) {
                 console.log(err);
             }
         })
