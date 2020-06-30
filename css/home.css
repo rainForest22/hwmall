@@ -1,0 +1,82 @@
+@charset'utf-8';
+/* 主体样式 */
+body{
+    font: 12px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size: 12px;
+}
+.wrap{
+    width: 1200px;
+    margin: 0 auto;
+}
+/* 导航栏 */
+nav{
+    min-width: 1200px;
+    height: 36px;
+    line-height: 36px;
+    background-color: #2e2828;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    position: relative;
+    z-index: 411;
+}
+.nav-container{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-container li{
+    float: left;
+    padding: 0 8px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.nav-container li a{
+    color: #afafaf;
+}
+.nav-container li:before {
+    content: "";
+    width: 1px;
+    height: 10px;
+    display: block;
+    position: absolute;
+    top: 13px;
+    left: 0;
+    background: #414141;
+}
+.nav-container a:hover{
+    color: #fff;
+}
+/* 左侧 */
+
+.dropdown{
+    cursor: pointer;
+    position: relative;
+}
+.dropdown:hover .b{
+    display: block;
+}
+.dropdown i{
+    position: absolute;
+    right: 0;
+    top: 0px;
+    color: #afafaf;
+}
+.dropdown-i{
+    position: relative;
+    padding-right: 18px;
+}
+.dropdown .b{
+    display: none;
+    position: absolute;
+    top: 36px;
+    right: 0;
+}
+
+/* 右侧 */
