@@ -5,15 +5,29 @@ class Slider {
         this.Sliderbox = null;
         this.Sliderpoint = null;
         this.Slidercontroller = null;
-        this.data = null;
+        this.data = [];
         this.index = 0;
         this.len = 0;
+        this.wrap = $('<div class="banner-wrap wrap"></div>');
     }
     //执行所有文件
     init() {
-        this.getData()
-        this.createUI();
-        this.createEvent();
+        this.wrap.appendTo(this.Fdom);
+        let that = this;
+        $.ajax({
+            type: "get",
+            url: this.url,
+            dataType: "JSON",
+            success: function (response) {
+                that.data = response;
+                that.len = that.data.length;
+            that.createUI();
+            that.createEvent();
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
     }
     // 发送请获得数据
     getData() {
@@ -24,7 +38,13 @@ class Slider {
             dataType: "JSON",
             success: function (response) {
                 that.data = response;
+                console.log(response);
+                console.log(that.data);
+
                 that.len = that.data.length;
+            },
+            error: function (err) {
+                console.log(err);
             }
         });
     }
@@ -43,19 +63,20 @@ class Slider {
     }
     // 创建点控制器
     createPoint() {
-        let html = this.data.map((item, idx) => `<li class="sliderPoints ${idx ? "" : "current"}" data-bannnerIndex=${idx}><li>`)
-        this.Sliderpoint = $(`<div class="sliderPoint>${html}<div>`);
-        this.Fdom.append(this.Sliderpoint);
+        let Html = this.data.map((item, idx) => `<li class="sliderPoints${idx ? "" : ' current'}" data-bannerIndex=${idx}></li>`).join("")
+        this.Sliderpoint = $(`<div class="sliderPoint">${Html}</div>`);
+        this.wrap.append(this.Sliderpoint);
     }
     // 创建左右控制器
     createController() {
         this.Slidercontroller = $('<div class="sliderController"><span id="sliderLeft" class="sliderControllers"><</span><span id="sliderRight" class="sliderControllers">></span></div>')
-        this.Fdom.append(this.Slidercontroller);
+        this.wrap.append(this.Slidercontroller);
     }
     // 创建事件
     createEvent() {
         this.imgChange();
         this.autoPlay();
+        this.stopPlay();
         this.controllerEvent();
         this.pointEvent();
     }
@@ -63,8 +84,8 @@ class Slider {
     imgChange() {
         // 处理边界
         this.index = this.index === this.len ? 0 : this.index < 0 ? this.len - 1 : this.index;
-        $(`.silderItem[data-bannerIndex="${this.index}"]`).addClass("current").sblings().removeClass("current");
-        $(`.sliderPoints[data-bannerIndex="${this.index}"]`).addClass("current").sblings().removeClass("current");
+        $(`.sliderItem[data-bannerIndex=${this.index}]`).addClass("current").siblings().removeClass("current");
+        $(`.sliderPoints[data-bannerIndex="${this.index}"]`).addClass("current").siblings().removeClass("current");
     }
     //自动播放
     autoPlay() {
@@ -72,7 +93,7 @@ class Slider {
         this.playing = setInterval(() => {
             that.index++;
             that.imgChange();
-        }, 2000)
+        }, 5000)
     }
     // 鼠标悬停停止自动播放
     stopPlay() {
@@ -97,11 +118,13 @@ class Slider {
     // 点控制
     pointEvent() {
         let that = this;
-        this.Sliderpoint.on("click"), function (e) {
+        $(".sliderPoints").on("mouseenter", function () {     
             clearInterval(that.playing);
-            that.index = $(e.target).prop("data-bannerIndex");
+            console.log(this);
+            console.log(this.getAttribute("data-bannerIndex"));
+            that.index = this.getAttribute("data-bannerIndex");
             that.imgChange();
             that.autoPlay();
-        }
+        })
     }
 }

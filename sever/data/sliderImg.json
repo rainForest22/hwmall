@@ -1,0 +1,26 @@
+[
+    {
+        "url":"https://sale.vmall.com/pseries.html",
+        "img":"http://localhost/hwmall/image/banner01.png"
+    },
+    {
+        "url":"https://sale.vmall.com/honor30.html",
+        "img":"http://localhost/hwmall/image/banner02.jpg"
+    },
+    {
+        "url":"https://www.vmall.com/product/10086226244792.html",
+        "img":"http://localhost/hwmall/image/banner03.png"
+    },
+    {
+        "url":"https://www.vmall.com/product/10086397382774.html",
+        "img":"http://localhost/hwmall/image/banner04.jpg"
+    },
+    {
+        "url":"https://sale.vmall.com/hwsmh.html",
+        "img":"http://localhost/hwmall/image/banner05.jpg"
+    },
+    {
+        "url":"https://sale.vmall.com/honorhome.html",
+        "img":"http://localhost/hwmall/image/banner06.jpg"
+    }
+]

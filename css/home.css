@@ -206,6 +206,70 @@ input[type="submit"]{
     outline: none;
     background: #f0f0f0;
     text-align: center;
+}
+/* banner */
+.banner{
+    position: relative;
+    width: 100%;
+}
+.banner_wrap{
+    position: absolute;
+    height: 100%;
+}
+.sliderController{
+    width: 1200px;
+    height: 30%;
+    position: absolute;
+    z-index: 5;
+    top: 40%;
+}
+.sliderController>span{
+    display: block;
+    color: #fff;
+    background-color: rgba(200, 200, 200, 0.3);
+    width: 60px;height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 100%;
+}
+.sliderController>span:hover{
+    cursor: pointer;
+    background-color: rgba(200, 200, 200, 0.9);
 
 }
+.sliderController #sliderLeft{
+    position: absolute;
+    left: 250px;
+}
+.sliderController #sliderRight{
+    position: absolute;
+    right: 10px;
+}
+.sliderPoint{
+    display: flex;
+    position: absolute;
+    bottom: 10%;right: 25%;
+    width: 200px;height: 20px;
+    justify-content: space-around;
+    align-items: center;
+}
+.sliderPoint .current{
+    background-color: #fff;
+}
+.sliderPoints{
+    border: #fff 3px solid;
+    width: 16px;height: 16px;
+    border-radius: 100%;
+}
 
+.sliderItem{
+    display: none;
+}
+.sliderItem img{
+    width: 100%;
+    height: 100%;
+}
+.banner-container .current{
+    display: block;
+}

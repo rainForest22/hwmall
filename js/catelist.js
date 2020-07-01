@@ -7,19 +7,19 @@ class CateList {
         this.cateList = null;
     }
     init() {
-        this.getData();
-        this.createUI();
-        this.createEvent();
-    }
-    getData() {
+        let that = this;
         $.ajax({
             type: "get",
             url: this.url,
             dataType: "JSON",
             success: function (response) {
                 this.data = response;
+                this.getData();
+                this.createUI();
+                this.createEvent();
             }
         });
+
     }
 
     createUI() {
