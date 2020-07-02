@@ -313,12 +313,16 @@ input[type="submit"]{
     flex-direction: column;
     justify-content: start;
     flex-wrap: wrap;
-    /* align-content: space-around; */
+    align-content: space-around;
     position: absolute;
     top: 0;
     left: 200px;
 }
-.cateList-container .current{
+.catehide p{
+    width: 160px;
+    text-align: center;
+}
+.cateList-container>li>.current{
     display: flex;
     height: 360px;min-width: 700px;
 
@@ -326,11 +330,11 @@ input[type="submit"]{
 .cateHideContent{
     width: 200px;height: 60px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 3px 0;
 }
-.catehide .current{
+.catehide>.current{
     background-color: #afafaf;
 }
 .cateHideContent img{
@@ -338,11 +342,59 @@ input[type="submit"]{
 }
 
 /* 轮播图下方菜单 */
+.channel{
+    height: 60px;
+    border: 1px #ccc solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.channelLeft{
+    flex: 0.25;
+    height: 50px;
+    border-right: #414141 1px dotted;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    align-items: center;
 
-
-
-
-
+}
+.userface{
+    width: 40px;height: 40px;
+    background: #000;
+    border-radius: 100%;
+}
+.channelLeft div{
+    width: 150px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.channelCenter{
+    flex: 0.5;
+}
+.channelCenter ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.channelRight{
+    flex: 0.25;
+    height: 40px;
+}
+.channelRight .youhui{
+    height: 50%;
+    border-top: #cccccc 1px solid;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.channelRight .youhui a{
+    width: 65px;
+}
 /* 口号 */
 #slogan-container{
 	background: #f0f0f0;

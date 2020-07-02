@@ -40,11 +40,11 @@ class CateList {
     }
 
     createEvent() {
-        $(".cateshow").on("mouseenter", function (e) {
+        $(".cateshow").parent().on("mouseenter", function (e) {
             $(".catehide").removeClass("current")
-            $(this).next().addClass("current")
+            $(this).children(".catehide").addClass("current")
         })
-        $(".cateshow").on("mouseleave", function (e) {
+        $(".cateshow").parent().on("mouseleave", function (e) {
             $(".catehide").removeClass("current")
         })
         $(".cateHideContent").on("mouseenter", function () {
