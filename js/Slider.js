@@ -120,8 +120,6 @@ class Slider {
         let that = this;
         $(".sliderPoints").on("mouseenter", function () {     
             clearInterval(that.playing);
-            console.log(this);
-            console.log(this.getAttribute("data-bannerIndex"));
             that.index = this.getAttribute("data-bannerIndex");
             that.imgChange();
             that.autoPlay();

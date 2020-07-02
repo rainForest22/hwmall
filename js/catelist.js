@@ -7,16 +7,17 @@ class CateList {
         this.cateList = null;
     }
     init() {
+        console.log(1);
+        
         let that = this;
         $.ajax({
             type: "get",
             url: this.url,
             dataType: "JSON",
             success: function (response) {
-                this.data = response;
-                this.getData();
-                this.createUI();
-                this.createEvent();
+                that.data = response;
+                that.createUI();
+                that.createEvent();
             }
         });
 
@@ -39,6 +40,7 @@ class CateList {
             return cateli;
         }).join("");
         this.cateList.append(html1);
+        this.FDom.append(this.cateList)
     }
 
     createEvent() {
