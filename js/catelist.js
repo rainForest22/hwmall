@@ -7,8 +7,6 @@ class CateList {
         this.cateList = null;
     }
     init() {
-        console.log(1);
-        
         let that = this;
         $.ajax({
             type: "get",
@@ -39,7 +37,7 @@ class CateList {
             cateli.append(`<div class="catehide">${html2}</div>`)
             return cateli;
         }).join("");
-        this.cateList.append(html1);
+        this.cateList.html(html1);
         this.FDom.append(this.cateList)
     }
 
