@@ -32,7 +32,7 @@ class CateList {
                 </div>
                 `
             }).join('')
-            let cateli = `<li><div class=cateshow data-catelistIndex=${idx1}>${item1.title}</div><span>></span><div class="catehide">${html2}</div></li>`;
+            let cateli = `<li><div class="cateshow" data-catelistIndex=${idx1}>${item1.title}<span>></span></div><div class="catehide clear_fix">${html2}</div></li>`;
             return cateli;
         }).join("");
         this.cateList.html(html1);
@@ -42,7 +42,10 @@ class CateList {
     createEvent() {
         $(".cateshow").on("mouseenter", function (e) {
             $(".catehide").removeClass("current")
-            $(this).next().next().addClass("current")
+            $(this).next().addClass("current")
+        })
+        $(".cateshow").on("mouseleave", function (e) {
+            $(".catehide").removeClass("current")
         })
         $(".cateHideContent").on("mouseenter", function () {
             $(this).addClass("current");

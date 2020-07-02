@@ -1,16 +1,18 @@
 class Floor{
-    constructor(FDom,dataUrl){
+    constructor(FDom,type){
         this.FDom = FDom;
-        this.url = Url;
         this.Floor=null;
         this.data = null;
+        this.type=type;
     }
     init(){
         let that =this;
         $.ajax({
-
             type: "get",
-            url: "this.url",
+            url: "http://localhost:8082/",
+            data:{
+                type : this.type
+            },
             dataType: "JSON",
             success: function (response) {
                 that.data= response;
