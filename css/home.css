@@ -273,3 +273,8 @@ input[type="submit"]{
 .banner-container .current{
     display: block;
 }
+
+/* catelist */
+.catehide{
+    display: none;
+}
