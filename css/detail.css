@@ -1,0 +1,12 @@
+@charset'utf-8';
+.showimg{
+    width: 600px;
+    height: 600px;
+}
+.minBox{
+    height: 600px;
+}
+.area{
+    background-color: rgba(220,220,220,0.4);
+    cursor: move;
+}

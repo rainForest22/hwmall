@@ -1,0 +1,209 @@
+@charset'utf-8';
+/* 主体样式 */
+*{
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font: 12px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size: 12px;
+}
+.wrap{
+    width: 1200px;
+    margin: 0 auto;
+}
+/* 导航栏 */
+nav{
+    min-width: 1200px;
+    height: 36px;
+    line-height: 36px;
+    background-color: #2e2828;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    position: relative;
+    z-index: 411;
+}
+.nav-container{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-container li{
+    float: left;
+    padding: 0 8px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.nav-container li a{
+    color: #afafaf;
+}
+.nav-container li:before {
+    content: "";
+    width: 1px;
+    height: 10px;
+    display: block;
+    position: absolute;
+    top: 13px;
+    left: 0;
+    background: #414141;
+}
+.nav-container a:hover{
+    color: #fff;
+}
+/* 左侧 */
+
+.dropdown{
+    cursor: pointer;
+    position: relative;
+}
+
+.dropdown:hover .b{
+    display: block;
+}
+.dropdown i{
+    position: absolute;
+    right: 0;
+    top: 0px;
+    color: #afafaf;
+}
+.dropdown-i{
+    position: relative;
+    padding-right: 18px;
+}
+.dropdown .b{
+    display: none;
+    position: absolute;
+    top: 36px;
+    right: 0;
+    box-shadow: black 3px;
+    background-color: #ccc;
+    min-width: 50px;
+    text-align: center;
+}
+
+/* 右侧 */
+#login_status{
+    display: none;
+}
+
+.cart{
+    padding: 0 4px;
+    height: 36px;
+    background: #424242;
+    cursor: pointer;
+    color: #afafaf;
+}
+.b .c{
+    width: 185.0px;
+    margin-top: 22.0px;
+    margin-bottom: 20.0px;
+}
+.b .c ul{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+.b .c ul h2{
+    font-weight: 700;
+    font-size: 16px;
+    color: #333
+}
+.b .c ul li{
+    color: #777;
+    font-size: 16px;
+    min-width: 35%;
+}
+#webnav:hover .b{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* header */
+
+header{
+    padding: 18px 0 15px;
+    height: 74px;
+}
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.header-container .left{
+    width: 754px;
+    display: flex;
+    justify-content: space-between;
+}
+header .header-container .img{
+    height: 36px;
+}
+.logo{
+    width: 205px;
+    height: 100%;
+}
+.logo a{
+    width: 205px;
+    height: 100%;
+}
+.logo img{
+    width: 205px;
+    height: 36px;
+}
+#naver-list{
+    width: 520px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#naver-list img{
+    height: 24px;
+    width: 74px;
+}
+#naver-list .img{
+    height: 24px;
+}
+#naver-list a{
+    font-size: 16px;
+    line-height: 40px;
+    color: black;
+}
+#naver-list a:hover{
+    color: #ca141d;
+}
+
+/* 搜索栏 */
+form{
+    position: relative;
+}
+.icon-sousu{
+    position: absolute;
+}
+#search-kw{
+    width: 205px;
+    height: 30px;
+    border: 1px solid #f0f0f0;
+    border-radius: 15px 0 0 15px;
+    padding-left: 10px;
+    border-right: none;
+    outline: none;
+    background: #f0f0f0;
+}
+input[type="submit"]{
+    width: 35px;
+    height: 30px;
+    border: 1px solid #f0f0f0;
+    border-radius: 0 15px 15px 0;
+    border-left: none;
+    outline: none;
+    background: #f0f0f0;
+    text-align: center;
+}
