@@ -1,0 +1,27 @@
+[
+    {
+        "type":"phone",
+        "title":"手机",
+        "imgurl":"http://localhost/hwmall/sever/productImg/phone0.jpg"
+    },
+    {
+        "type":"laotop",
+        "title":"笔记本电脑",
+        "imgurl":"http://localhost/hwmall/sever/productImg/laptop0.png"
+    },
+    {
+        "type":"pad",
+        "title":"平板电脑",
+        "imgurl":"http://localhost/hwmall/sever/productImg/pad0.png"
+    },
+    {
+        "type":"wear",
+        "title":"智能穿戴",
+        "imgurl":"http://localhost/hwmall/sever/productImg/wear0.png"
+    },
+    {
+        "type":"smartHome",
+        "title":"智能家居",
+        "imgurl":"http://localhost/hwmall/sever/productImg/smartHome0.png"
+    }
+]

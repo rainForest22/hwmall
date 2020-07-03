@@ -5,9 +5,7 @@ const mysql = require('mysql');
 var sever = http.createServer(function (req, res) {
     res.writeHead(200, { "Content-Type": "application/json;charset=utf8", "Access-Control-Allow-Origin": "http://localhost" });
     // 获取请求数据
-    console.log(req.url);
-
-    let data = url.parse(req.url, true).query;
+    let data = url.parse(req.url, true).query;    
     // 连接数据库
     let db = mysql.createConnection({
         host: 'localhost',
@@ -20,9 +18,10 @@ var sever = http.createServer(function (req, res) {
         console.log('数据库连接成功');
     });
     //执行sql语句
-    let sqlSearch=`SELECT * FROM goods where good_type= "${data.type}"`;
+    let sqlSearch=`SELECT * FROM goods WHERE good_type="${data.type}"`;
     db.query(sqlSearch,(err,result)=>{
-        res.end(result);
+        if(err) throw err;
+        res.end(JSON.stringify(result));
         db.end();
     })
 });
