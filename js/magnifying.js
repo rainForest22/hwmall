@@ -1,3 +1,4 @@
+
 // 放大镜
 class magnifying {
     constructor(FDom, url) {
@@ -6,8 +7,6 @@ class magnifying {
         this.minBox = null;
         this.bigBox = null;
         this.area = null;
-        this.areaTop = 0;
-        this.areaLeft = 0;
         this.magnifyingBox = null;
         this.inner = false;
         this.Top = 0;
@@ -15,7 +14,7 @@ class magnifying {
         this.width = $(FDom).width();
         this.height = $(FDom).height();
     }
-    init(){
+    init() {
         this.createUI()
         this.createEvent()
     }
@@ -23,8 +22,10 @@ class magnifying {
     createUI() {
         this.magnifyingBox = $('<div class="magnifyingBox"></div>')
         this.magnifyingBox.css("position", "relative")
-        this.Top = this.magnifyingBox.position().top;
+        this.Top = 110;
         this.Left = this.magnifyingBox.position().left;
+        console.log(this.magnifyingBox[0].getBoundingClientRect());
+        
         this.createminBox();
         this.createbigBox();
         this.createArea();
@@ -32,7 +33,7 @@ class magnifying {
     }
     //小盒子
     createminBox() {
-        this.minBox = $(`<div class="minBox" style="background:no-repeat center/100% url(${this.url})"></div>`)
+        this.minBox = $(`<div class="minBox" style="background:no-repeat center/80% url(${this.url})"></div>`)
         this.magnifyingBox.append(this.minBox);
     }
     //大盒子
@@ -40,7 +41,8 @@ class magnifying {
         this.bigBox = $(`<div class="bigBox hidden"></div>`)
         this.bigBox.css({
             "background-image": `url(${this.url})`,
-            "background-size": "300%",
+            "background-size": "240%",
+            "background-position":"center",
             "background-repeat": "no-repeat"
         })
         this.magnifyingBox.append(this.bigBox);
@@ -48,10 +50,8 @@ class magnifying {
     //放大区域
     createArea() {
         this.area = $(`<div class="area hidden"></div>`);
-        this.area.css("position", "absoluted");
-        this.areaTop = this.area.position().top;
-        this.areaLeft = this.area.position().left;
-        this.magnifyingBox.append(this.area);
+        this.area.css("position", "absolute");
+        this.minBox.append(this.area);
     }
     // 事件
     createEvent() {
@@ -63,8 +63,7 @@ class magnifying {
     // 鼠标进入
     enter() {
         let that = this;
-        this.minBox.on('mouseenter', (e) => {
-            that.inner = true;
+        this.minBox.on('mouseover', (e) => {
             that.bigBox.removeClass('hidden')
             that.area.removeClass('hidden')
         })
@@ -73,32 +72,27 @@ class magnifying {
     leave() {
         let that = this;
         this.minBox.on('mouseleave', (e) => {
-            that.inner = false;
             that.bigBox.addClass('hidden')
             that.area.addClass('hidden')
-            that.follow();
-            that.bigBoxChange();
         })
     }
     // 鼠标移动时放大区域跟随
     follow() {
+        let x, y;
         this.minBox.on('mousemove', (e) => {
-            if (!this.inner) return;
-            let x = e.pageX-this.Left-this.width/6;
-            let y = e.pageX-this.Top-this.height/6;
-            if(x<0)this.areaLeft=0;
-            else if(x>this.width*5/6)this.areaLeft=this.width*2/3;
-            else this.areaLeft=x;
-            if(y<0)this.areaTop=0;
-            else if(y>this.width*5/6)this.areaTop=this.width*2/3;
-            else this.areaTop=y;
-            this.bigBoxChange();
+            x = e.clientX - this.Left - this.width / 6;
+            y = e.clientY - this.Top - this.height / 6;
+            if (x < 0) this.area[0].style.left = 0;
+            else if (x > this.width * 2 / 3) this.area[0].style.left = this.width * 2 / 3 + "px";
+            else this.area[0].style.left = x + "px";
+
+            if (y < 0) this.area[0].style.top = 0;
+            else if (y > this.height * 2 / 3) this.area[0].style.top = this.height * 2 / 3 + "px";
+            else this.area[0].style.top = y + "px";
+            this.bigBox.css({
+                "background-position": `${-this.area.position().left * 3}px ${-this.area.position().top * 3}px`
+            })
         })
     }
-    // 鼠标移动时大盒子显示区域
-    bigBoxChange() {
-        this.bigBox.css({
-            "background-position": `${-this.areaLeft*3}px ${-this.areaTop*3}px`,
-        })
-    }
+
 }

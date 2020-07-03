@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/iconfont.css">
     <link rel="icon" href="./image/favicon.ico">
     <link rel="stylesheet" href="./css/reset.css">
     <script src="./js/jquery-3.5.1.js"></script>
@@ -12,7 +14,216 @@
     <link rel="stylesheet" href="./css/detail.css">
     <title></title>
 </head>
+
 <body>
-    <div class="showimg"></div>
+    <!-- 待完善的导航栏 -->
+    <nav>
+        <div class="nav-container wrap">
+            <div class="navleft">
+                <ul class="clear_fix">
+                    <li><a href="https://www.vmall.com">首页</a>
+                    </li>
+                    <li><a href="https://consumer.huawei.com/cn/" target="_blank">华为官网</a></li>
+                    <li><a href="https://www.honor.cn/" target="_blank">荣耀官网</a></li>
+                    <li><a href="https://club.huawei.com" target="_blank">花粉俱乐部</a></li>
+                    <li><a href="javascript:;" rel="nofollow">V码(优购码)</a></li>
+                    <li><a href="/company" target="_blank">企业购</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <div class="h">
+                                <a class="dropdown-i">更多精彩</a>
+                                <i class="iconfont icon-xiala"></i>
+                            </div>
+                            <div class="b">
+                                <div class="dropdown-more w-119">
+                                    <dl>
+                                        <dt><a href="https://emui.huawei.com/cn/" target="_blank">EMUI</a></dt>
+                                        <dt><a href="https://appstore.huawei.com/" target="_blank">应用市场</a></dt>
+                                        <dt><a href="https://cloud.huawei.com" target="_blank">华为终端云空间</a></dt>
+                                        <dt><a href="https://developer.huawei.com/" target="_blank">开发者联盟</a></dt>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="navright">
+                <ul class="clear_fix">
+                    <li id="unlogin_status">
+                        <a href="./login.html">请登录</a>
+                        <a href="./register.html">&nbsp;注册</a>
+                    </li>
+                    <li id="login_status"></li>
+                    <li><a href="#">我的订单</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <div class="h">
+                                <a class="dropdown-i">客户服务</a>
+                                <i class="iconfont icon-xiala"></i>
+                            </div>
+                            <div class="b">
+                                <div class="dropdown-more w-119">
+                                    <dl>
+                                        <dt><a href="https://emui.huawei.com/cn/" target="_blank">服务中心</a></dt>
+                                        <dt><a href="https://appstore.huawei.com/" target="_blank">联系客服</a></dt>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown" id="webnav">
+                            <div class="h">
+                                <a class="dropdown-i">网站导航</a>
+                                <i class="iconfont icon-xiala"></i>
+                            </div>
+                            <div class="b clear_fix">
+                                <div class="c">
+                                    <h2 class="nav-h-c">频道</h2>
+                                    <ul>
+                                        <li><a>华为专区</a></li>
+                                        <li><a>荣耀专区</a></li>
+                                        <li><a>企业购</a></li>
+                                    </ul>
+                                </div>
+                                <div class="c">
+                                    <h2 class="nav-h-c">产品</h2>
+                                    <ul>
+                                        <li><a href="#">手机</a></li>
+                                        <li><a href="#">笔记本</a></li>
+                                        <li><a href="#">平板</a></li>
+                                        <li><a href="#">智能穿戴</a></li>
+                                        <li><a href="#">智能家居</a></li>
+                                        <li><a href="#">智慧屏</a></li>
+                                        <li><a href="#">手机</a></li>
+                                        <li><a href="#">笔记本</a></li>
+                                        <li><a href="#">平板</a></li>
+                                        <li><a href="#">智能穿戴</a></li>
+                                        <li><a href="#">智能家居</a></li>
+                                        <li><a href="#">智慧屏</a></li>
+                                    </ul>
+                                </div>
+                                <div class="c">
+                                    <h2 class="nav-h-c">增值服务</h2>
+                                    <ul>
+                                        <li><a href="#">以旧换新</a></li>
+                                        <li><a href="#">补够保障</a></li>
+                                        <li><a href="#">一口价换电池</a></li>
+                                    </ul>
+                                </div>
+                                <div class="c">
+                                    <h2 class="nav-h-c">会员</h2>
+                                    <ul>
+                                        <li>会员频道</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown" id="nav-phone">
+                            <div class="h"></div>
+                            <a class="dropdown-i">手机版</a>
+                            <i class="iconfont icon-xiala"></i>
+                        </div>
+                        <div class="b">
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="cart">
+                            <i class="iconfont icon-cart"></i>
+                            <span>购物车</span>
+                            <span class="cart_num">(0)</span>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <!-- 顶部搜索栏 -->
+    <header>
+        <div class="header-container wrap">
+            <div class="left">
+                <!-- 2017-02-15-logo-start -->
+                <div class="logo">
+                    <a href="https://www.vmall.com/index.html" title="Vmall.com - 华为商城"
+                        src="https://res.vmallres.com/pimages//common/config/logo/SXppnESYv4K11DBxDFc2.png"
+                        alt="Vmall.com - 华为商城">
+                        <img src="https://res.vmallres.com/pimages//common/config/logo/SXppnESYv4K11DBxDFc2.png"
+                            alt="Vmall.com - 华为商城">
+                    </a>
+                </div>
+                <!-- 2017-02-15-logo-end -->
+
+                <!-- 2017-06-19-导航-start -->
+                <div class="naver">
+                    <ul id="naver-list" class="clear_fix">
+                        <li class="img" id="huawei">
+                            <a href="https://www.vmall.com/huawei" target="_blank">
+                                <img src="https://res.vmallres.com/pimages//navigation/icon/GrguiqzHENWVYHYWyHBM.png">
+                            </a>
+                        </li>
+                        <li class="img" id="honor">
+                            <a href="https://www.vmall.com/honor" target="_blank">
+                                <img src="https://res.vmallres.com/pimages//navigation/icon/AHwTUFRpDSQyuIZ7tLJz.png">
+                            </a>
+                        </li>
+                        <li id="huawei" class="">
+                            <a href="https://sale.vmall.com/pseries.html" target="_blank">
+
+                                <span>华为 P40 系列</span>
+                            </a>
+                        </li>
+                        <li id="huawei" class="">
+                            <a href="https://sale.vmall.com/honor30.html">
+
+                                <span>荣耀30系列</span>
+                            </a>
+                        </li>
+                        <li id="huawei" class="">
+                            <a href="https://www.vmall.com/huawei/smarthome2020.html">
+
+                                <span>安心居家</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 2017-06-19-导航-end -->
+            </div>
+
+            <div class="right">
+                <!-- 2017-02-15-搜索条-焦点为search-form增加className:hover -start -->
+                <div class="search-bar relative" id="searchBar-area">
+                    <form method="get">
+                        <input type="text" class="text" maxlength="200" id="search-kw" autocomplete="off">
+                        <input type="submit" class="button iconfont icon-sousu" value=" ">
+                        <i class="iconfont icon-sousu"></i>
+                    </form>
+                </div>
+                <!-- 2017-02-15-搜索条-end -->
+            </div>
+        </div>
+    </header>
+    <div class="product wrap">
+        <!-- 放大镜区域 -->
+        <div class="showimg fll"></div>
+        <!-- 右侧菜单 -->
+        <div class="buy flr">
+            <h2 class="goodname">商品名称</h2>
+            <p class="desc">66666666666666666666666666666666666666666666666666</p>
+            <p class="price">价格<span>￥1561</span></p>
+            <p>
+                <input type="button" value="-" class="addnum">
+                <input type="text" value="1" class="num">
+                <input type="button" value="+" class="minus">
+                <button class="addCart">加入购物车</button>
+            </p>
+        </div>
+    </div>
+
 </body>
+
 </html>
