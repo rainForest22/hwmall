@@ -33,7 +33,8 @@ class magnifying {
     }
     //小盒子
     createminBox() {
-        this.minBox = $(`<div class="minBox" style="background:no-repeat center/80% url(${this.url})"></div>`)
+        this.minBox = $(`<div class="minBox" style="background-image: url(${this.url}); position: absolute; width: 450px; height: 450px; left: 0px; top: 0px; cursor: move;"></div>`)
+        this.minBox.append($(`<img src="${this.url}">`))
         this.magnifyingBox.append(this.minBox);
     }
     //大盒子
