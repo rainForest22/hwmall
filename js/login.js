@@ -1,6 +1,6 @@
 $(() => {
     let options = {
-        username: {
+        userid: {
             reg: "/^1[3-9]\\d{9}$/.test(val)",
             msg: "请输入正确的手机号"
         },
@@ -10,17 +10,17 @@ $(() => {
         }
     }
     //验证事件
-    $("#username,#pwd,#cfpwd,#imageCode").on("blur", function () {
+    $("#userid,#pwd,#cfpwd,#imageCode").on("blur", function () {
         let val = $.trim($(this).val())
         $(this).next().next().text(`${eval(options[this.id].reg) ? "" : options[this.id].msg}`)
     })
     //注册提交
     $("#registerBtn").click(function () {
-        $("#username,#pwd,#cfpwd,#imageCode").trigger("blur");
+        $("#userid,#pwd,#cfpwd,#imageCode").trigger("blur");
         if ($("span:empty").length != 2) return;
         //将提交信息存入data
         let data = {
-            username: $.trim($("#username").val()),
+            userid: $.trim($("#userid").val()),
             pwd: md5($.trim($("#pwd").val())).slice(-10)
         }
         //发送请求
@@ -37,6 +37,9 @@ $(() => {
                         break;
                     case 1:
                         console.log(response.msg);
+                        sessionStorage.setItem("user_name",response.username);
+                        sessionStorage.setItem("user_id",data.userid);
+                        sessionStorage.setItem("user_pwd",data.pwd);
                         location.href="../hwmall/home.html";
                         break;
                     case -1:

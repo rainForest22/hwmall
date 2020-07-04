@@ -43,11 +43,7 @@ class FloorA{
         })
         //请求结束之后执行以下函数
         Promise.all([p1,p2]).then(()=>{
-            that.createUI();  
-            if (this.type==="laptop") {
-                console.log(this.data);
-                
-            }          
+            that.createUI();        
         })
     }
     createUI(){

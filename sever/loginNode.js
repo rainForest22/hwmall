@@ -24,10 +24,10 @@ var sever = http.createServer(function (req, res) {
     //执行sql语句
     //判断用户是否已经存在
     new Promise((resolve, rejects) => {
-        let sqlSearch = `SELECT * FROM users where user_id = "${data.username}"`;
+        let sqlSearch = `SELECT * FROM users where user_id = "${data.userid}"`;
         db.query(sqlSearch, (err, result) => {
             if (result.length == 0) {
-                resolve()
+                resolve(result)                
             } else {
                 rejects(result);
             }
@@ -39,7 +39,8 @@ var sever = http.createServer(function (req, res) {
     }).catch((result) => {
         // 用户存在确认密码是否正确
         if (result[0].user_pwd === data.pwd) {
-            res.end('{"status":1,"msg":"登录成功，跳转首页"}');
+            console.log(result);
+            res.end(`{"status":1,"msg":"登录成功，跳转首页","username":"${result[0].user_name}"}`);
         } else {
             res.end('{"status":-1,"msg":"密码错误"}');
         }

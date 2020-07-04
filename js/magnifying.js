@@ -23,7 +23,7 @@ class magnifying {
         this.magnifyingBox = $('<div class="magnifyingBox"></div>')
         this.magnifyingBox.css("position", "relative")
         this.Top = 110;
-        this.Left = this.magnifyingBox.position().left;
+        this.Left = 360;
         console.log(this.magnifyingBox[0].getBoundingClientRect());
         
         this.createminBox();

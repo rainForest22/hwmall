@@ -24,7 +24,7 @@ var sever = http.createServer(function (req, res) {
     //执行sql语句
     //判断用户是否已经存在
     new Promise((resolve, rejects) => {
-        let sqlSearch = `SELECT * FROM users where user_id = "${data.username}"`;
+        let sqlSearch = `SELECT * FROM users where user_id = "${data.userid}"`;
         db.query(sqlSearch, (err, result) => {
             if (result.length == 0) {
                 resolve()
@@ -34,7 +34,7 @@ var sever = http.createServer(function (req, res) {
         })
     }).then(() => {
         // 不存在时新增用户
-        let sqlInsert = `INSERT INTO users (user_id,user_pwd) VALUES ('${data.username}','${data.pwd}')`
+        let sqlInsert = `INSERT INTO users (user_id,user_pwd,user_name) VALUES ('${data.userid}','${data.pwd}','${data.username}')`
         db.query(sqlInsert, (error, results) => {
             if (error) throw error;
             res.end('{"status":"success","msg":"恭喜您注册成功"}');
