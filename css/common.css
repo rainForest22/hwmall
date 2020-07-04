@@ -207,3 +207,183 @@ input[type="submit"]{
     background: #f0f0f0;
     text-align: center;
 }
+
+
+/* 底部内容 */
+/* 口号 */
+#slogan-container{
+	background: #f0f0f0;
+	width: 100%;
+}
+.slogan{
+	padding: 46px 0 46px;
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.slogan li{
+	float: left;
+	line-height: 47px;
+	font-size: 18px;
+	color: #3a3a3a;
+	height: 47px;
+	width: 300px;
+	text-align: left;
+}
+.slogan li i{
+	display: inline-block;
+	line-height: 47px;
+	width: 47px;
+	height: 47px;
+	margin-right: 16px;
+	vertical-align: middle;
+	background: url(../img/icon0.png);
+}
+.slogan .s2 i {
+    background-position: -94px 0;
+}
+.slogan .s3 i {
+    background-position: -141px 0;
+}
+.slogan .s4 i {
+    background-position: -47px 0;
+}
+
+/*服务*/
+#se{
+	width:100%;
+	background: #F0F0F0;
+}
+.service{
+	border-top: 1px solid #e8e8e8;
+	padding: 26px 0 18px;
+	width: 1200px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.f1{
+	float:left;
+}
+.service-l{
+	width: 944px;
+	min-height: 164px;
+	margin-top: 2px;
+	border-right: 1px solid #ebebeb;
+}
+.service .service-l dl{
+	width:16%;
+	float:left;
+}
+.service dt {
+    font-size: 14px;
+    color: #3a3a3a;
+}
+.service dt .line {
+    background: #a8a8a8;
+    width: 22px;
+    height: 2px;
+    margin: 2px 0 12px 0;
+}
+.service dt .title {
+    font-size: 14px;
+    padding-bottom: 12px;
+    color: #3a3a3a;
+}
+.service dd li{
+    line-height: 24px;
+}
+.service dd li a{
+    color:#666;
+}
+/*鼠标悬浮超链接字体颜色变化*/
+.service dd li a:hover{
+    color:#CA151D;
+}
+
+/*设置400号码字体大小*/
+.service-r .s7 .title{
+	font-size: 24px;
+    padding: 0;
+    line-height: 24px;
+}
+
+/* 右部分 */
+.service .service-r {
+    width: 210px;
+    margin-top: 2px;
+    padding-left: 40px;
+    /*background: red;*/
+}
+
+.btn-line-primary {
+    display: inline-block;
+    width: 161px;
+    height: 35px;
+    padding: 0;
+    margin-top: 10px;
+    background: #FFF;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    line-height: 35px;
+    text-align: center;
+    color: #900;
+    cursor: pointer;
+    border-radius: 5px;
+}
+/*设置在线客服里面的小图标*/
+.btn-line-primary i{
+	display: inline-block;
+    height: 18px;
+    width: 22px;
+    background:url(../img/icon2.png) -303px 0 no-repeat;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/*底部*/
+.footer-container{
+    background: #e6e6e6;
+    width: 100%;
+    height:120px;
+}
+.footer{
+    padding: 26px 0 34px;
+    width: 1200px;
+    margin: 0 auto;
+    color: #666;
+    line-height: 1.5;
+}
+.f-logo{
+	width: 79px;
+	height: 16px;
+	padding: 20px 38px 0 0;
+	float: left;
+}
+.area{
+	text-align: left;
+	color: #a4a4a4;
+	line-height: 20px;
+}
+.area a{
+	color: #a4a4a4;
+}
+.fl{
+	float: left;
+	font-size: 12px;
+}
+
+.fr{
+	padding:15px 0 0;
+	float: right;
+}
+.fr a{
+	display: block;
+	width: 70px;
+	margin-left: 4px;
+	height: 24px;
+}
+.fr img{
+	vertical-align: top;
+	width: 70px;
+	height: 24px;
+}

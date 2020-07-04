@@ -28,7 +28,7 @@ $(() => {
         if ($("span:empty").length != 4) return;
         //将提交信息存入data
         let data = {
-            userid:$.trim($("#userid").val()),
+            userid: $.trim($("#userid").val()),
             username: $.trim($("#username").val()),
             pwd: md5($.trim($("#pwd").val())).slice(-10)
         }
@@ -42,12 +42,14 @@ $(() => {
             success: function (response) {
                 if (response.status == "success") {
                     console.log(response.msg);
-                        location.href="../hwmall/home.html";
+                    sessionStorage.setItem("user_name", data.username);
+                    sessionStorage.setItem("user_id", data.userid);
+                    location.href = "../hwmall/home.html";
                 } else {
                     console.log(response.msg);
                 }
             },
-            error:function(err){
+            error: function (err) {
                 console.log(err);
             }
         })

@@ -1,61 +1,48 @@
-$(() => {
-    /* 登录状态的处理 */
-    /* 检查本地是否保存user_id和user_name的值，如果本地有，那么表示当前是登录状态 */
-    /* 如果没有，那么表示当前是未登录的状态 */
+$(function () {
+    //判断用户是否已登录
     let user_id = sessionStorage.getItem("user_id") || "";
     let user_name = sessionStorage.getItem("user_name") || "";
-    console.log(user_id, user_name);
     if (user_id && user_name) {
-        $(".userInfo").text(`${user_name}:欢迎您`);
-        $(".status").text("注销");
+        $("#unlogin_status").html(`<a href="#">${user_name}:欢迎您<a>`);
+        $(".loginWarn").css("display", "none")
     } else {
-        $(".userInfo").text(`匿名用户:欢迎您`);
-        $(".status").text("登录");
+        return;
     }
-
-    $(".status").click(function() {
-        if ($(this).text() == "登录") {
-            location.href = "./login.html";
-        } else {
-            localStorage.removeItem("user_id")
-            localStorage.removeItem("user_name");
-            /* 重新加载 */
-            window.location.reload();
-        }
-    })
-
-    /* 发请求获取购物车的商品信息 */
     $.ajax({
+        type: "get",
         url: "http://localhost:8083/",
-        data: { user_id },
-        dataType: "json"
-    }).done(data => {
-        data = dataTool(data);
-        renderUI(data);
-    })
-
-   
-
-
+        data: {
+            user_id: user_id
+        },
+        dataType: "JSON",
+        success: function (response) {
+            switch (response.status) {
+                case 0:
+                    break;
+                case 1:
+                    $(".cartLess").css("display", "none");
+                    console.log(response.msg);
+                    renderUI(response.msg)
+                    break;
+                default:
+                    break;
+            }
+        }
+    });
     function renderUI(orderData) {
-        // console.log(orderData);
-        let html = "";
-
-        orderData.forEach(data => {
-
-            let listHtml = data.goods.map(item => {
-                return `
-                <ul class="order_lists order_item" gid=${item.good_id}>
+        let html = orderData.map(item => {
+            return `
+            <ul class="cartGood" gid=${item.good_id}>
                 <li class="list_chk">
-                  <input type="checkbox" class="son_check">
-                  <label></label>
+                    <input type="checkbox" class="son_check">
+                    <label></label>
                 </li>
                 <li class="list_con">
-                  <div class="list_img"><img src=${item.src} alt=""></div>
-                  <div class="list_text">${item.title}</div>
+                    <div class="list_img"><img src=${item.good_src} alt=""></div>
+                    <div class="list_text">${item.dsc}</div>
                 </li>
                 <li class="list_price">
-                  <p class="price">￥${item.price}</p>
+                  <p class="price">￥${item.good_price}</p>
                 </li>
                 <li class="list_amount">
                   <div class="amount_box">
@@ -65,35 +52,16 @@ $(() => {
                   </div>
                 </li>
                 <li class="list_sum">
-                  <p class="sum_price" data-price="23">￥${item.num * item.price}</p>
+                    <p class="sum_price" data-price="23">￥${item.num * item.good_price}</p>
                 </li>
                 <li class="list_op">
-                  <p class="del"><a href="javascript:;" class="delBtn">移除商品</a></p>
+                    <p class="del"><a href="javascript:;" class="delBtn">删除</a></p>
                 </li>
-              </ul>
-                `
-            }).join("");
-
-            let cartBoxHtml = `<div class="cartBox">
-            <div class="shop_info">
-                    <div class="all_check">
-                      <input type="checkbox" id="shop_a" class="shopChoice">
-                      <label for="shop_a" class="shop"></label>
-                    </div>
-                    <div class="shop_name">
-                      店铺：<a href="">${data.store}</a>
-                    </div>
-            </div>
-            <div class="order_content">${listHtml}</div>
-        </div>
-        `
-            html += cartBoxHtml;
-        })
-
-        $(html).insertAfter(".cartMain_hd");
+            </ul>
+             `
+        }).join("");
+        $(".cartList-C").html(html);
     }
-
-
     function dataTool(data) {
         let arr = [];
         data.forEach(item => {

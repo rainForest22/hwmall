@@ -39,7 +39,6 @@ $(() => {
                         console.log(response.msg);
                         sessionStorage.setItem("user_name",response.username);
                         sessionStorage.setItem("user_id",data.userid);
-                        sessionStorage.setItem("user_pwd",data.pwd);
                         location.href="../hwmall/home.html";
                         break;
                     case -1:

@@ -4,7 +4,7 @@ $(function () {
     let user_name = sessionStorage.getItem("user_name") || "";
     console.log(user_id, user_name);
     if (user_id && user_name) {
-        $("#unlogin_status").html(`<a href="#">${user_name}:欢迎您<a>`);
+        $("#unlogin_status,.loginstauts").html(`<a href="#">${user_name}:欢迎您<a>`);
     }
     // 生成轮播图    
     new Slider($(".banner"),"http://localhost/hwmall/sever/data/sliderImg.json").init();
