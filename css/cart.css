@@ -74,3 +74,205 @@ body{
     background: #ca141d;
     border-radius: 2px;
 }
+
+/* 主体 */
+/* 购物清单公共样式 */
+.cartList ul{
+    background-color: #fff;
+    margin-bottom: 15px;
+    padding-left: 40px;
+
+}
+label[class*="mark"] {
+    background: url("../image/mark1.png") no-repeat -1px -1px!important;
+}
+label {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    border: 1px solid #b8b8b8;
+    margin-left: 10px;
+    border-radius: 1px;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
+input[type="checkbox"] {
+    display: none;
+}
+.all_check input[type="checkbox"] {
+    position: absolute;
+    z-index: 0;
+    left: -20px;
+    top: -20px;
+}
+
+/* 购物清单表头样式 */
+.cartList-H ul{
+    height: 40px;
+    display: flex;
+    justify-content: start;
+}
+.cartList-H ul li{
+    line-height: 40px;
+    text-align: center;
+}
+.cartList-H .list_chk{
+    text-align: left;
+    width: 150px;
+}
+.cartList-H .list_con{
+    text-align: left;
+    width: 450px;
+}
+.cartList-H .list_price{
+    width: 100px;
+    margin-left: 30px;
+}
+.cartList-H .list_amount{
+    width: 100px;
+    margin-left: 30px;
+}
+.cartList-H .list_sum{
+    width: 100px;
+    margin-left: 30px;
+}
+.cartList-H .list_op{
+    width: 100px;
+    margin-left: 30px;
+}
+
+
+/* 购物清单主体 */
+
+
+.cartList-C ul{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 15px 0 15px 40px;
+}
+.cartList-C ul li{
+    text-align: center;
+}
+.cartList-C .list_chk{
+    text-align: left;
+    width: 20px;
+}
+.cartList-C ul .list_con{
+    text-align: left;
+    width: 580px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.list_img img{
+    width: 100px;height: 100px;
+}
+.list_text{
+    margin-left: 40px;
+    max-width: 440px;
+    word-wrap: wrap;
+}
+.cartList-C .list_price{
+    width: 140px;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.cartList-C .list_amount{
+    width: 100px;
+    margin-left: 15px;
+}
+.amount_box{
+    width: 100%;
+    border: #a4a4a4 1px solid;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.reduce{
+    border-right: #a4a4a4 1px solid;
+    text-align: center;
+    width: 21px;height: 20px;
+    line-height: 20px;
+    margin: 0;
+}
+.sum{
+    border: none;
+    border-right: #a4a4a4 1px solid;
+    text-align: center;
+    width: 45px;height: 20px;
+    line-height: 20px;
+    font-size: 100%;
+    margin: 0;
+    outline: none;
+}
+.plus{
+    text-align: center;
+    width: 20px;height: 20px;
+    line-height: 20px;
+}
+.cartList-C .list_sum{
+    color: #ca141d;
+    width: 100px;
+    margin-left: 25px;
+}
+.cartList-C .list_op{
+    width: 100px;
+    margin-left: 30px;
+}
+.cartList-C .list_op a{
+    color: #a4a4a4;
+
+}
+/* 购物单底部样式 */
+.cartList-B ul{
+    height: 60px;
+    padding-left: 40px;
+}
+.cartList-B ul li{
+    line-height: 60px;
+    text-align: center;
+}
+.cartList-B .list_chk{
+    float: left;
+    text-align: left;
+    width: 52px;
+}
+.list_delSel{
+    float: left;
+    margin-left: 20px;
+    width: 48px;
+}
+.list_delSel a{
+    color: #a4a4a4;
+}
+.numMsg{
+    float: right;
+    margin: 5px 0;
+}
+.numMsg .totalprice{
+    height: 27px;
+    line-height: 26px;
+    text-align: right;
+}
+.numMsg .totalprice span{
+    color: #ca151e;
+    font-size: 20px;
+}
+.numMsg .totalnum{
+    height: 17px;
+    line-height: 16px;
+    color: #a4a4a4;
+}
+.calBtn{
+    float: right;
+    width: 180px;
+    margin-left: 20px;
+}
+.calBtn a{
+    background-color: #ca141d;
+    font-size: 18px;
+    color: #fff;
+}

@@ -8,6 +8,8 @@ $(function () {
     } else {
         return;
     }
+
+    // 购物车商品信息
     $.ajax({
         type: "get",
         url: "http://localhost:8083/",
@@ -62,52 +64,39 @@ $(function () {
         }).join("");
         $(".cartList-C").html(html);
     }
-    function dataTool(data) {
-        let arr = [];
-        data.forEach(item => {
-            let result = arr.filter((ele) => ele.store == item.shopName);
-            if (result.length == 0) {
-                arr.push({ store: item.shopName, goods: [] });
-            }
-        })
-
-        /* 把所有的数据依次加入到对象中去 */
-        data.forEach(item => {
-            arr.forEach(ele => {
-                if (ele.store == item.shopName) {
-                    ele.goods.push(item);
-                }
-            })
-        })
-        return arr;
-    }
-
-    /* 全选的功能：点击的时候切换选中的状态(改变自己的状态 + 改变所有其他复选框的状态) */
-    $("#all").click(function() {
-        // console.log(this, $(this).is(":checked"));
-        $(this).next().toggleClass("mark");
-        $(".cartBox").find("input[type=checkbox]").next().toggleClass("mark");
+    // 数字变化
+    
+    // 单选的功能
+    $(".cartList-C").find("input[type=checkbox]").click(function(){
+        $("this").next().toggleClass("mark");
+        $(".cartList-C").find("input[type=checkbox]").next().hasClass("mark")
+    })
+    /* 全选的功能 */
+    $(".all").click(function () {  
+        $(".all").next().toggleClass("mark");
+        $(".cartList-C").find("input[type=checkbox]").next().toggleClass("mark");
         computedTotal();
     })
-
-
+    // 单选的功能
+    $()
     /* 封装方法计算商品的总数和总价 */
     function computedTotal() {
-        // let flag = $(".order_item").find(".son_check").next().hasClass("mark");
-        let ele = $(".order_item").filter(function() {
+        let ele = $(".cartGood").filter(function () {
             return $(".son_check", this).next().hasClass("mark") == true;
         })
 
         /* 计算数量 */
         let total = 0;
         let totalPrice = 0;
-        ele.each(function(index, item) {
-            console.log(index, item, $(item).find(".sum").val(), $(item).find(".sum_price").text().slice(1));
+        ele.each(function (index, item) {
             total += $(item).find(".sum").val() * 1;
             totalPrice += $(item).find(".sum_price").text().slice(1) * 1;
         })
 
-        $(".piece_num").text(total);
-        $(".total_text").text("￥" + totalPrice.toFixed(2));
+        $(".piece").text(total);
+        $(".totalprice").text("￥" + totalPrice.toFixed(2));
     }
+    // 封装计算单个商品价格的方法
+    function computedsigne() {  }
+    // 封装计算总商品数量的方法
 })
