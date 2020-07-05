@@ -39,7 +39,7 @@ $(function () {
                 </li>
                 <li class="list_con">
                     <div class="list_img"><img src=${item.good_src} alt=""></div>
-                    <div class="list_text">${item.dsc}</div>
+                    <div class="list_text">${item.good_dsc}</div>
                 </li>
                 <li class="list_price">
                   <p class="price">￥${item.good_price}</p>
