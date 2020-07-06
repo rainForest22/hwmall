@@ -23,7 +23,6 @@ $(function () {
                     break;
                 case 1:
                     $(".cartLess").css("display", "none");
-                    console.log(response.msg);
                     renderUI(response.msg)
                     break;
                 default:
@@ -65,11 +64,22 @@ $(function () {
         $(".cartList-C").html(html);
     }
     // 数字变化
-    
+    $(".sum").on("blur",function () {  
+        computedTotal();
+    })
+    $(".reduce").click(function () {  
+        $(this).next().val()?$(this).next().val()--:0;
+        computedTotal();
+    })
+    $(".plus").click(function () {  
+        $(this).prev().val()++;
+        computedTotal();
+    })
     // 单选的功能
     $(".cartList-C").find("input[type=checkbox]").click(function(){
         $("this").next().toggleClass("mark");
         $(".cartList-C").find("input[type=checkbox]").next().hasClass("mark")
+        computedTotal();
     })
     /* 全选的功能 */
     $(".all").click(function () {  
@@ -77,8 +87,7 @@ $(function () {
         $(".cartList-C").find("input[type=checkbox]").next().toggleClass("mark");
         computedTotal();
     })
-    // 单选的功能
-    $()
+    
     /* 封装方法计算商品的总数和总价 */
     function computedTotal() {
         let ele = $(".cartGood").filter(function () {
@@ -97,6 +106,11 @@ $(function () {
         $(".totalprice").text("￥" + totalPrice.toFixed(2));
     }
     // 封装计算单个商品价格的方法
-    function computedsigne() {  }
+    function computedsigleprice() {  
+        $(".sum_price").val(`￥ ${$(this).find(".price").text().slice(1)*$("")}`)
+    }
     // 封装计算总商品数量的方法
+    function computedtotalnum(){
+        let ele = $(".sum")
+    }
 })
