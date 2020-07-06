@@ -31,12 +31,12 @@ $(function () {
         }
     });
     function renderUI(orderData) {
-        let html = orderData.map(item => {
+        let html = orderData.map((item, idx) => {
             return `
             <ul class="cartGood" gid=${item.good_id}>
                 <li class="list_chk">
-                    <input type="checkbox" class="son_check">
-                    <label></label>
+                    <input type="checkbox" class="son_check"  id="son_check_${idx}">
+                    <label for="son_check_${idx}"></label>
                 </li>
                 <li class="list_con">
                     <div class="list_img"><img src=${item.good_src} alt=""></div>
@@ -62,38 +62,49 @@ $(function () {
              `
         }).join("");
         $(".cartList-C").html(html);
+        // 数字变化
+        $(".sum").on("blur", function () {
+            computedTotal();
+        })
+        $(".reduce").click(function () {
+            let num=parseInt($(this).next().val());
+            $(this).next().val(`${num>0? num-1 : 0}`)
+            computedTotal();
+        })
+        $(".plus").click(function () {
+            let num=parseInt($(this).prev().val());
+            $(this).prev().val(num+1);
+            computedTotal();
+        })
+        // 单选的功能
+        $(".cartList-C").find("input[type=checkbox]").click(function () {    
+            $(this).next().toggleClass("mark");
+            console.log($(".cartList-C").find("input[type=checkbox]"));
+            
+            let ele=$(".cartList-C").find("input[type=checkbox]").next().map((idx,item)=>$(item).hasClass("mark"))
+            computedTotal();
+            for(let i=0;i<ele.length;i++){
+                if(ele[i]==false){
+                    $(".all").next().removeClass("mark");
+                    return;
+                }
+            }
+            $(".all").next().addClass("mark");
+        })
     }
-    // 数字变化
-    $(".sum").on("blur",function () {  
-        computedTotal();
-    })
-    $(".reduce").click(function () {  
-        $(this).next().val()?$(this).next().val()--:0;
-        computedTotal();
-    })
-    $(".plus").click(function () {  
-        $(this).prev().val()++;
-        computedTotal();
-    })
-    // 单选的功能
-    $(".cartList-C").find("input[type=checkbox]").click(function(){
-        $("this").next().toggleClass("mark");
-        $(".cartList-C").find("input[type=checkbox]").next().hasClass("mark")
-        computedTotal();
-    })
     /* 全选的功能 */
-    $(".all").click(function () {  
+    $(".all").click(function () {
         $(".all").next().toggleClass("mark");
-        $(".cartList-C").find("input[type=checkbox]").next().toggleClass("mark");
+        $(".all").next().hasClass("mark")?$(".cartList-C").find("input[type=checkbox]").next().addClass("mark"):$(".cartList-C").find("input[type=checkbox]").next().removeClass("mark");
         computedTotal();
     })
-    
+
     /* 封装方法计算商品的总数和总价 */
     function computedTotal() {
         let ele = $(".cartGood").filter(function () {
             return $(".son_check", this).next().hasClass("mark") == true;
         })
-
+        
         /* 计算数量 */
         let total = 0;
         let totalPrice = 0;
@@ -103,14 +114,14 @@ $(function () {
         })
 
         $(".piece").text(total);
-        $(".totalprice").text("￥" + totalPrice.toFixed(2));
+        $(".totalprice").children().text("￥ " + totalPrice.toFixed(2));
     }
     // 封装计算单个商品价格的方法
-    function computedsigleprice() {  
-        $(".sum_price").val(`￥ ${$(this).find(".price").text().slice(1)*$("")}`)
+    function prePrice() {
+        
     }
     // 封装计算总商品数量的方法
-    function computedtotalnum(){
-        let ele = $(".sum")
+    function computedtotalnum() {
+        let ele = $(".sum");
     }
 })

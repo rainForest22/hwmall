@@ -180,8 +180,8 @@ input[type="checkbox"] {
     margin-left: 10px;
 }
 .cartList-C .list_amount{
-    width: 100px;
-    margin-left: 15px;
+    min-width: 80px;
+    margin-left: 22px;
 }
 .amount_box{
     width: 100%;
