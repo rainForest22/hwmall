@@ -37,7 +37,6 @@ var sever = http.createServer(function (req, res) {
         let sqlSearch2 = `SELECT cart.*,good_dsc,good_src,good_name,good_price FROM cart , goods WHERE cart.good_id = goods.good_id AND user_id=${data.user_id}`;
         db.query(sqlSearch2, (error, results) => {
             if (error) throw error;
-            console.log(results);
             res.end(`{"status":1,"msg":${JSON.stringify(results)}}`);
         });
         db.end();
