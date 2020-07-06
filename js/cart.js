@@ -74,13 +74,12 @@ $(function () {
         $(".plus").click(function () {
             let num=parseInt($(this).prev().val());
             $(this).prev().val(num+1);
+            prePrice(this)
             computedTotal();
         })
         // 单选的功能
         $(".cartList-C").find("input[type=checkbox]").click(function () {    
-            $(this).next().toggleClass("mark");
-            console.log($(".cartList-C").find("input[type=checkbox]"));
-            
+            $(this).next().toggleClass("mark");            
             let ele=$(".cartList-C").find("input[type=checkbox]").next().map((idx,item)=>$(item).hasClass("mark"))
             computedTotal();
             for(let i=0;i<ele.length;i++){
@@ -91,6 +90,16 @@ $(function () {
             }
             $(".all").next().addClass("mark");
         })
+        // 删除功能
+        $(".delBtn").click(function(){
+            $(this).parents(".cartGood").remove();
+            if($(".cartList-C").children().length==0){
+                $(".cartLess").css("display","block");
+                $(".cartList").css("display","none")
+            }
+        })
+        // 选中删除
+        $(".dlete")
     }
     /* 全选的功能 */
     $(".all").click(function () {
@@ -108,6 +117,7 @@ $(function () {
         /* 计算数量 */
         let total = 0;
         let totalPrice = 0;
+        let num=0;
         ele.each(function (index, item) {
             total += $(item).find(".sum").val() * 1;
             totalPrice += $(item).find(".sum_price").text().slice(1) * 1;
@@ -117,11 +127,9 @@ $(function () {
         $(".totalprice").children().text("￥ " + totalPrice.toFixed(2));
     }
     // 封装计算单个商品价格的方法
-    function prePrice() {
-        
-    }
-    // 封装计算总商品数量的方法
-    function computedtotalnum() {
-        let ele = $(".sum");
+    function prePrice(that) {
+        let nums=$(that).parent().parent().find(".sum").val();
+        let price=$(that).parent().parent().prev().find(".price").text().slice(1);
+        $(that).parent().parent().next().find(".sum_price").text(`￥${nums*price}`)
     }
 })
