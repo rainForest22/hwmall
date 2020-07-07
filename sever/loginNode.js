@@ -7,8 +7,6 @@ const mysql = require('mysql');
 var sever = http.createServer(function (req, res) {
     res.writeHead(200, { "Content-Type": "application/json;charset=utf8", "Access-Control-Allow-Origin": "http://localhost" });
     // 获取请求数据
-    console.log(req.url);
-
     let data = url.parse(req.url, true).query;
     // 连接数据库
     let db = mysql.createConnection({

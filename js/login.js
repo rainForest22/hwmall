@@ -26,7 +26,6 @@ $(() => {
         //发送请求
         $.ajax({
             type: "get",
-            // url: "../sever/registerNode.js",
             url: "http://localhost:8081/",
             data,
             dataType: "JSON",
