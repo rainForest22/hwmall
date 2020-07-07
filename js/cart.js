@@ -99,7 +99,16 @@ $(function () {
             }
         })
         // 选中删除
-        $(".dlete")
+        $(".list_delSel").click(function(){
+            let ele=$(".cartGood").filter(function () {  
+                return $(".son_check", this).next().hasClass("mark") == true;
+            })
+            ele.each((idx,item)=>{
+                item.remove();
+                computedTotal();
+            })
+        })
+        //与数据库联动
     }
     /* 全选的功能 */
     $(".all").click(function () {
@@ -117,7 +126,6 @@ $(function () {
         /* 计算数量 */
         let total = 0;
         let totalPrice = 0;
-        let num=0;
         ele.each(function (index, item) {
             total += $(item).find(".sum").val() * 1;
             totalPrice += $(item).find(".sum_price").text().slice(1) * 1;
@@ -132,4 +140,5 @@ $(function () {
         let price=$(that).parent().parent().prev().find(".price").text().slice(1);
         $(that).parent().parent().next().find(".sum_price").text(`￥${nums*price}`)
     }
+
 })
