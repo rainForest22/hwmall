@@ -109,6 +109,7 @@
     position: absolute;
     top: 0;
     left: 200px;
+    border-radius: 0 20px 20px 0;
 }
 .catehide p{
     width: 160px;
@@ -135,7 +136,7 @@
 
 /* 轮播图下方菜单 */
 .channel{
-    height: 60px;
+    height: 90px;
     border: 1px #ccc solid;
     border-radius: 10px;
     display: flex;
@@ -146,7 +147,6 @@
     padding: 0 20px;
 }
 .channelLeft{
-    flex: 0.25;
     height: 50px;
     border-right: #414141 1px dashed;
     display: flex;
@@ -166,23 +166,27 @@
     justify-content: start;
     align-items: center;
 }
-.channelCenter{
-    flex: 0.5;
-}
+
 .channelCenter ul{
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 .channelRight{
-    flex: 0.25;
-    height: 40px;
+    height: 100%;
+}
+.channelRight>:first-child{
+    height: 45%;
+    line-height: 38px;
+    font-size: 18px;
 }
 .channelRight span{
-    margin-left: 20px;
+    line-height: 38px;
+    height: 100%;
+    margin-left: 30px;
+    font-size: 14px;
 }
 .channelRight .youhui{
-    height: 50%;
     border-top: #cccccc 1px dashed;
     display: flex;
     justify-content: space-around;

@@ -4,8 +4,10 @@ $(function () {
     let user_name = sessionStorage.getItem("user_name") || "";
     console.log(user_id, user_name);
     if (user_id && user_name) {
-        $("#unlogin_status,.loginstauts").html(`<a href="#">${user_name}:欢迎您<a>`);
+        $("#unlogin_status,.loginstauts").html(`<a href="#">${user_name}:欢迎您  <a><a href="../login.html">   注销</a>`);
     }
+    //购物车数量
+    cartNum(user_id);
     // 生成轮播图    
     new Slider($(".banner"),"http://localhost/hwmall/sever/data/sliderImg.json").init();
     // 生成清单表

@@ -21,7 +21,7 @@ $(function () {
             switch (response.status) {
                 case 0:
                     console.log(response.msg);
-                    
+
                     break;
                 case 1:
                     $(".cartLess").css("display", "none");
@@ -32,6 +32,7 @@ $(function () {
             }
         }
     });
+    cartNum(user_id);
     function renderUI(orderData) {
         let html = orderData.map((item, idx) => {
             return `
@@ -66,26 +67,31 @@ $(function () {
         $(".cartList-C").html(html);
         // 数字变化
         $(".sum").on("blur", function () {
-            computedTotal();
-        })
-        $(".reduce").click(function () {
-            let num=parseInt($(this).next().val());
-            $(this).next().val(`${num>0? num-1 : 0}`)
-            computedTotal();
-        })
-        $(".plus").click(function () {
-            let num=parseInt($(this).prev().val());
-            $(this).prev().val(num+1);
             prePrice(this)
             computedTotal();
+            singleDataChange(this);
+        })
+        $(".reduce").click(function () {
+            let num = parseInt($(this).next().val());
+            $(this).next().val(`${num > 0 ? num - 1 : 0}`)
+            prePrice(this)
+            computedTotal();
+            singleDataChange(this);
+        })
+        $(".plus").click(function () {
+            let num = parseInt($(this).prev().val());
+            $(this).prev().val(num + 1);
+            prePrice(this)
+            computedTotal();
+            singleDataChange(this);
         })
         // 单选的功能
-        $(".cartList-C").find("input[type=checkbox]").click(function () {    
-            $(this).next().toggleClass("mark");            
-            let ele=$(".cartList-C").find("input[type=checkbox]").next().map((idx,item)=>$(item).hasClass("mark"))
+        $(".cartList-C").find("input[type=checkbox]").click(function () {
+            $(this).next().toggleClass("mark");
+            let ele = $(".cartList-C").find("input[type=checkbox]").next().map((idx, item) => $(item).hasClass("mark"))
             computedTotal();
-            for(let i=0;i<ele.length;i++){
-                if(ele[i]==false){
+            for (let i = 0; i < ele.length; i++) {
+                if (ele[i] == false) {
                     $(".all").next().removeClass("mark");
                     return;
                 }
@@ -93,29 +99,46 @@ $(function () {
             $(".all").next().addClass("mark");
         })
         // 删除功能
-        $(".delBtn").click(function(){
+        $(".delBtn").click(function () {
             $(this).parents(".cartGood").remove();
-            if($(".cartList-C").children().length==0){
-                $(".cartLess").css("display","block");
-                $(".cartList").css("display","none")
+            if ($(".cartList-C").children().length == 0) {
+                $(".cartLess").css("display", "block");
+                $(".cartList").css("display", "none")
             }
+            singleDelete(this);
+            computedTotal()
         })
         // 选中删除
-        $(".list_delSel").click(function(){
-            let ele=$(".cartGood").filter(function () {  
+        $(".list_delSel").click(function () {
+            let delgid=''
+            let ele = $(".cartGood").filter(function () {
                 return $(".son_check", this).next().hasClass("mark") == true;
             })
-            ele.each((idx,item)=>{
+            ele.each((idx, item) => {
+                delgid+=$(item).attr('gid')+','
                 item.remove();
                 computedTotal();
             })
+            delgid.slice(0,-1);            
+            $.ajax({
+                type: "get",
+                url: "http://localhost:3100/cart/Delete",
+                data: {good_ids:delgid},
+                dataType: "JSON",
+                success: function (response) {
+                    cartNum(user_id);
+                }
+            });
+            if ($(".cartList-C").children().length == 0) {
+                $(".cartLess").css("display", "block");
+                $(".cartList").css("display", "none")
+            }
         })
-        //与数据库联动
     }
     /* 全选的功能 */
     $(".all").click(function () {
         $(".all").next().toggleClass("mark");
-        $(".all").next().hasClass("mark")?$(".cartList-C").find("input[type=checkbox]").next().addClass("mark"):$(".cartList-C").find("input[type=checkbox]").next().removeClass("mark");
+        $(".all").next().hasClass("mark") ? $(".cartList-C").find("input[type=checkbox]").next().addClass("mark") : $(".cartList-C").find("input[type=checkbox]").next().removeClass("mark");
         computedTotal();
     })
 
@@ -124,7 +147,7 @@ $(function () {
         let ele = $(".cartGood").filter(function () {
             return $(".son_check", this).next().hasClass("mark") == true;
         })
-        
+
         /* 计算数量 */
         let total = 0;
         let totalPrice = 0;
@@ -138,9 +161,36 @@ $(function () {
     }
     // 封装计算单个商品价格的方法
     function prePrice(that) {
-        let nums=$(that).parent().parent().find(".sum").val();
-        let price=$(that).parent().parent().prev().find(".price").text().slice(1);
-        $(that).parent().parent().next().find(".sum_price").text(`￥${nums*price}`)
+        let nums = $(that).parent().parent().find(".sum").val();
+        let price = $(that).parent().parent().prev().find(".price").text().slice(1);
+        $(that).parent().parent().next().find(".sum_price").text(`￥${nums * price}`)
     }
-
+    //与数据库联动
+    //修改单个商品数量
+    function singleDataChange(that){
+        let good_id=$(that).parents(".cartGood").attr('gid');
+        let newnum =$(that).parent().find(".sum").val();
+        $.ajax({
+            type: "get",
+            url: "http://localhost:3100/cart/singleChange",
+            data: {good_id,num:newnum},
+            dataType: "JSON",
+            success: function (response) {
+                cartNum(user_id);
+            }
+        });
+    }
+    //删除单个商品
+    function singleDelete(that) {  
+        let good_id=$(that).parents(".cartGood").attr('gid');
+        $.ajax({
+            type: "get",
+            url: "http://localhost:3100/cart/singleDelete",
+            data: {good_id},
+            dataType: "JSON",
+            success: function (response) {
+                cartNum(user_id);
+            }
+        });
+    }
 })
