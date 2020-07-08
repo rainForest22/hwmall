@@ -6,7 +6,7 @@ let sqlUse = require("./db");
 Router.put("/login", async (req, res) => {
     try {
         let { userid, pwd } = req.body;
-        let sqlStr = `SELECT * FROM users WHERE userid = "${userid}"`;
+        let sqlStr = `SELECT * FROM users WHERE user_id = "${userid}"`;
         let result = await sqlUse(sqlStr);
         let inf = {}
         if (!result.length) {
@@ -15,7 +15,7 @@ Router.put("/login", async (req, res) => {
                 flag:false,
                 msg:"用户不存在"
             }
-        }else if(result[0].pwd!==pwd){
+        }else if(result[0].user_pwd!==pwd){
             inf={
                 status:1,
                 flag:false,
@@ -25,7 +25,7 @@ Router.put("/login", async (req, res) => {
             inf={
                 status:2,
                 flag:true,
-                msg:"登录成功"
+                msg:{username:result[0].user_name}
             }
         }
         res.send(inf);
@@ -43,7 +43,7 @@ Router.put("/login", async (req, res) => {
 Router.post("/register", async (req,res)=>{
     try {
         let { userid, pwd , username} = req.body;
-        let sqlStr1 = `SELECT * FROM users WHERE userid = "${userid}"`;
+        let sqlStr1 = `SELECT * FROM users WHERE user_id = "${userid}"`;
         let sqlStr2 = `INSERT INTO users (user_id,user_pwd,user_name) VALUES ('${userid}','${pwd}','${username}')`
         let result1 = await sqlUse(sqlStr1);
         let inf = {}

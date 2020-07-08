@@ -25,23 +25,26 @@ $(() => {
         }
         //发送请求
         $.ajax({
-            type: "get",
-            url: "http://localhost:8081/",
+            type: "put",
+            url: "http://localhost:3100/user/login",
             data,
             dataType: "JSON",
             success: function (response) {
                 switch (response.status) {
+                    case -1:
+                        console.log(response.msg);
+                        break;
                     case 0:
                         console.log(response.msg);
                         break;
                     case 1:
                         console.log(response.msg);
-                        sessionStorage.setItem("user_name",response.username);
-                        sessionStorage.setItem("user_id",data.userid);
-                        location.href="../hwmall/home.html";
                         break;
-                    case -1:
+                    case 2:
                         console.log(response.msg);
+                        sessionStorage.setItem("user_name", response.msg.username);
+                        sessionStorage.setItem("user_id", data.userid);
+                        location.href = "../hwmall/home.html";
                         break;
                     default:
                         break;

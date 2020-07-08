@@ -12,7 +12,7 @@ $(function () {
     // 购物车商品信息
     $.ajax({
         type: "get",
-        url: "http://localhost:8083/",
+        url: "http://localhost:3100/cart/gain",
         data: {
             user_id: user_id
         },
@@ -20,6 +20,8 @@ $(function () {
         success: function (response) {
             switch (response.status) {
                 case 0:
+                    console.log(response.msg);
+                    
                     break;
                 case 1:
                     $(".cartLess").css("display", "none");

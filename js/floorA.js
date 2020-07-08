@@ -19,7 +19,7 @@ class FloorA{
                     type : this.type
                 },
                 dataType: "JSON",
-                success: function (response) {
+                success: function (response) {                    
                     that.typedata=response.find(item=>item.type===that.type)
                     resolve();
                 }
@@ -29,7 +29,7 @@ class FloorA{
         const p2 = new Promise((resolve,reject)=>{
             $.ajax({
                 type: "get",
-                url: "http://localhost:8082/",
+                url: "http://localhost:3100/good/floor",
                 data:{
                     type:this.type
                 },
@@ -96,7 +96,7 @@ class FloorB{
         const p2 = new Promise((resolve,reject)=>{
             $.ajax({
                 type: "get",
-                url: "http://localhost:8082/",
+                url: "http://localhost:3100/good/floor",
                 data:{
                     type:this.type
                 },

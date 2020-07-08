@@ -35,18 +35,25 @@ $(() => {
         //发送请求
         $.ajax({
             type: "get",
-            // url: "../sever/registerNode.js",
-            url: "http://localhost:8080/",
+            url: "http://localhost:3100/user/register",
             data,
             dataType: "JSON",
             success: function (response) {
-                if (response.status == "success") {
-                    console.log(response.msg);
-                    sessionStorage.setItem("user_name", data.username);
-                    sessionStorage.setItem("user_id", data.userid);
-                    location.href = "../hwmall/home.html";
-                } else {
-                    console.log(response.msg);
+                switch (response.status) {
+                    case -1:
+                        console.log(response.msg);
+                        break;
+                    case 0:
+                        console.log(response.msg);
+                        break;
+                    case 1:
+                        console.log(response.msg);
+                        sessionStorage.setItem("user_name", data.username);
+                        sessionStorage.setItem("user_id", data.userid);
+                        location.href = "../hwmall/home.html";
+                        break;
+                    default:
+                        break;
                 }
             },
             error: function (err) {
