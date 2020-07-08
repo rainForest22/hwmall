@@ -11,5 +11,14 @@ Router.get('/floor', async (req,res)=>{
         throw err;
     }
 })
-
+    Router.get('/single',async (req,res)=>{
+        try {
+            let {good_id}=req.query;
+            let sqlStr = `SELECT * FROM goods WHERE good_id = "${good_id}"`
+            let result = await sqluse(sqlStr)
+            res.send(result[0])
+        } catch (err) {
+            throw err
+        }
+    })
 module.exports = Router;
